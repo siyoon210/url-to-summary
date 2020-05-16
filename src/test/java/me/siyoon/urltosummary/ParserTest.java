@@ -6,9 +6,11 @@ import org.jsoup.select.Elements;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.junit.MockitoJUnitRunner;
+import org.opengraph.MetaElement;
 import org.opengraph.OpenGraph;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -31,5 +33,11 @@ public class ParserTest {
         System.out.println("title = " + title);
         String type = testPage.getContent("type");
         System.out.println("type = " + type);
+        System.out.println("testPage.getBaseType() = " + testPage.getBaseType());
+        System.out.println("testPage.getProperties() = " + Arrays.toString(testPage.getProperties()));
+        final MetaElement[] titles = testPage.getProperties("title");
+        for (MetaElement metaElement : titles) {
+            System.out.println("metaElement = " + metaElement);
+        }
     }
 }
